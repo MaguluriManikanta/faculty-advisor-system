@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     if($conn->query($sql)){
         echo "Faculty Added Successfully";
     } else {
-        echo "Error";
+        echo "Error" . $conn->error;
     }
 }
 ?>
