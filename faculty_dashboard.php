@@ -5,7 +5,7 @@ $faculty_id = $_GET['id'];
 // Handle search
 $search_query = "";
 if(isset($_GET['search']) && $_GET['search'] != ""){
-    $search = $_GET['search'];
+    $search = mysqli_real_escape_string($conn, $_GET['search']);
     $search_query = " AND (students.name LIKE '%$search%' 
                           OR students.email LIKE '%$search%' 
                           OR students.class LIKE '%$search%')";
