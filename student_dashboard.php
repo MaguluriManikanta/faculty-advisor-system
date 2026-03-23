@@ -6,7 +6,7 @@ if(!isset($_GET['id'])){
     die("Student ID not provided");
 }
 
-$id = $_GET['id'];
+$id =(int) $_GET['id'];
 
 // Fetch student
 $result = $conn->query("SELECT * FROM students WHERE id='$id'");
