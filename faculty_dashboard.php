@@ -14,9 +14,16 @@ if(isset($_GET['search']) && $_GET['search'] != ""){
 // Fetch students assigned to this faculty
 $sql = "SELECT students.* FROM students 
         JOIN advisor ON students.id = advisor.student_id 
-        WHERE advisor.faculty_id='$faculty_id' $search_query";
+        WHERE advisor.faculty_id='$faculty_id'";
+
+if(isset($_GET['search']) && $_GET['search'] != ""){
+    $search = mysqli_real_escape_string($conn, $_GET['search']);
+    $sql .= " AND (students.name LIKE '%$search%' 
+                   OR students.email LIKE '%$search%' 
+                   OR students.class LIKE '%$search%')";
+}
+
 $result = $conn->query($sql);
-?>
 
 <!DOCTYPE html>
 <html>
