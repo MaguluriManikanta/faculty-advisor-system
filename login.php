@@ -14,8 +14,10 @@ if ($result->num_rows > 0) {
 
     if ($user['role'] == 'faculty') {
         header("Location: faculty_dashboard.php?id=".$user['id']);
+        exit();
     } else {
         header("Location: student_dashboard.php?id=".$user['id']);
+        exit();
     }
 } else {
     echo "Invalid Login";
